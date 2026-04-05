@@ -3,197 +3,254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REM Dashboard | Rohan Kurhekar</title>
+<title>Renewable Energy Management | Rohan Kurhekar</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #020617;
-    color: white;
-    transition: 0.4s;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-/* LOADER */
-#loader {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
+body{
+background:linear-gradient(135deg,#020617,#0f172a);
+color:white;
+transition:0.4s;
 }
 
 /* NAV */
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    background: rgba(0,0,0,0.6);
-    position: sticky;
-    top: 0;
+nav{
+display:flex;
+justify-content:space-between;
+padding:15px 40px;
+position:sticky;
+top:0;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+z-index:100;
+}
+
+nav h2{
+color:#4ade80;
+}
+
+nav button{
+padding:6px 12px;
+border:none;
+cursor:pointer;
+border-radius:20px;
 }
 
 /* HERO */
-.hero {
-    height: 100vh;
-    background: url('https://images.unsplash.com/photo-1509395176047-4a66953fd231') center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.hero{
+height:100vh;
+background:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+flex-direction:column;
 }
 
-/* BUTTON */
-.toggle {
-    cursor: pointer;
+.hero h1{
+font-size:3rem;
+}
+
+.hero p{
+margin-top:10px;
+}
+
+/* SECTION */
+section{
+padding:60px 10%;
+}
+
+h2{
+text-align:center;
+margin-bottom:30px;
+color:#4ade80;
 }
 
 /* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    gap: 20px;
-    padding: 40px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 /* CARD */
-.card {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
+.card{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(12px);
+padding:20px;
+border-radius:15px;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+/* IMAGES */
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+/* COUNTERS */
+.counter{
+font-size:2rem;
+font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
 }
 
 /* LIGHT MODE */
-.light {
-    background: #f1f5f9;
-    color: black;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
+.light{
+background:#f1f5f9;
+color:black;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-    <h1>Loading REM...</h1>
-</div>
-
 <!-- NAV -->
 <nav>
-    <h2>REM Dashboard</h2>
-    <div class="toggle" onclick="toggleMode()">🌗</div>
+<h2>REM Dashboard</h2>
+<button onclick="toggleMode()">🌗 Mode</button>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-    <h1 data-aos="zoom-in">Renewable Energy Dashboard 🌱</h1>
+<h1 data-aos="zoom-in">Renewable Energy Management 🌱</h1>
+<p data-aos="fade-up">Sustainable Future with Smart Energy Systems</p>
 </div>
 
-<!-- COUNTERS -->
-<div class="grid">
-
-<div class="card" data-aos="fade-up">
-<h2 id="solar">0</h2>
-<p>Solar Energy %</p>
-</div>
-
-<div class="card" data-aos="fade-up">
-<h2 id="wind">0</h2>
-<p>Wind Energy %</p>
-</div>
-
-<div class="card" data-aos="fade-up">
-<h2 id="hydro">0</h2>
-<p>Hydro Energy %</p>
-</div>
-
-</div>
-
-<!-- CHARTS -->
-<div class="grid">
-<div class="card">
-<canvas id="chart1"></canvas>
-</div>
-
-<div class="card">
-<canvas id="chart2"></canvas>
-</div>
-</div>
-
-<!-- PROJECT -->
+<!-- ABOUT -->
+<section>
+<h2 data-aos="fade-up">About REM</h2>
 <div class="grid">
 <div class="card" data-aos="fade-right">
-<h3>Project</h3>
-<p>AI-based Renewable Energy Optimization System</p>
+<p>Renewable Energy Management (REM) involves efficient use of energy from solar, wind, hydro, and biomass sources.</p>
+</div>
+<div class="card" data-aos="fade-left">
+<p>It focuses on sustainability, reducing carbon footprint, and optimizing energy distribution using smart technologies.</p>
+</div>
+</div>
+</section>
+
+<!-- TYPES WITH IMAGES -->
+<section>
+<h2 data-aos="fade-up">Energy Sources</h2>
+<div class="grid">
+
+<div class="card" data-aos="zoom-in">
+<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231">
+<p>☀️ Solar Energy</p>
 </div>
 
-<div class="card" data-aos="fade-left">
-<h3>Research</h3>
-<p>Renewable Energy Management Paper (ISSN)</p>
+<div class="card" data-aos="zoom-in">
+<img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9">
+<p>🌬️ Wind Energy</p>
 </div>
+
+<div class="card" data-aos="zoom-in">
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+<p>💧 Hydropower</p>
 </div>
+
+</div>
+</section>
+
+<!-- COUNTERS -->
+<section>
+<h2 data-aos="fade-up">Energy Contribution</h2>
+<div class="grid">
+<div class="card"><div class="counter" id="solar">0</div>Solar %</div>
+<div class="card"><div class="counter" id="wind">0</div>Wind %</div>
+<div class="card"><div class="counter" id="hydro">0</div>Hydro %</div>
+</div>
+</section>
+
+<!-- CHART -->
+<section>
+<h2 data-aos="fade-up">Energy Data Visualization</h2>
+<canvas id="chart"></canvas>
+</section>
+
+<!-- TECHNOLOGY -->
+<section>
+<h2 data-aos="fade-up">Technologies</h2>
+<div class="grid">
+<div class="card">⚡ Smart Grid</div>
+<div class="card">🔋 Battery Storage</div>
+<div class="card">📡 IoT Monitoring</div>
+<div class="card">🤖 AI Optimization</div>
+</div>
+</section>
+
+<!-- PROJECT -->
+<section>
+<h2 data-aos="fade-up">My Project</h2>
+<div class="card">
+<p><b>AI-Based Renewable Energy Optimization</b></p>
+<p>System that predicts and optimizes energy consumption using machine learning.</p>
+</div>
+</section>
+
+<!-- RESEARCH -->
+<section>
+<h2 data-aos="fade-up">Research Paper</h2>
+<div class="card">
+<p><b>Renewable Energy Management</b></p>
+<p>Study on energy efficiency, smart grids, and sustainable development.</p>
+</div>
+</section>
 
 <footer>
 <p>Rohan Kurhekar | BE EXCS-A | REM</p>
 </footer>
 
+<!-- SCRIPTS -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init();
 
-/* LOADER */
-window.onload = function() {
-    document.getElementById("loader").style.display = "none";
+/* DARK MODE */
+function toggleMode(){
+document.body.classList.toggle("light");
 }
 
-/* DARK LIGHT MODE */
-function toggleMode() {
-    document.body.classList.toggle("light");
+/* COUNTER */
+let s=0,w=0,h=0;
+let i=setInterval(()=>{
+if(s<40){s++;document.getElementById("solar").innerText=s;}
+if(w<30){w++;document.getElementById("wind").innerText=w;}
+if(h<30){h++;document.getElementById("hydro").innerText=h;}
+if(s>=40 && w>=30 && h>=30) clearInterval(i);
+},40);
+
+/* CHART */
+new Chart(document.getElementById('chart'),{
+type:'bar',
+data:{
+labels:['Solar','Wind','Hydro'],
+datasets:[{
+label:'Energy %',
+data:[40,30,30]
+}]
 }
-
-/* COUNTER ANIMATION */
-let solar=0, wind=0, hydro=0;
-
-let interval = setInterval(()=>{
-    if(solar<40){solar++; document.getElementById("solar").innerText=solar;}
-    if(wind<30){wind++; document.getElementById("wind").innerText=wind;}
-    if(hydro<30){hydro++; document.getElementById("hydro").innerText=hydro;}
-    if(solar>=40 && wind>=30 && hydro>=30) clearInterval(interval);
-},50);
-
-/* CHARTS */
-new Chart(document.getElementById("chart1"), {
-    type: 'pie',
-    data: {
-        labels: ['Solar','Wind','Hydro'],
-        datasets: [{
-            data: [40,30,30]
-        }]
-    }
-});
-
-new Chart(document.getElementById("chart2"), {
-    type: 'line',
-    data: {
-        labels: ['Jan','Feb','Mar','Apr'],
-        datasets: [{
-            label: 'Energy Growth',
-            data: [10,20,30,40]
-        }]
-    }
 });
 </script>
 
